@@ -42,7 +42,9 @@ Briefly uses a lot of CPU and memory so interactivity suffers. You should use `e
 
 Throws the following exception:
 
-    Internal Error: Too much recursion
+```text
+Internal Error: Too much recursion
+```
 
 -}
 stackOverflow : a -> b
@@ -64,9 +66,11 @@ The error is even more cryptic than `stackOverflow`, but the CPU, memory and int
 
 Throws the following exception:
 
-    Error: Trying to use `(==)` on functions.
-    There is no way to know if functions are "the same" in the Elm sense.
-    Read more about this at https://package.elm-lang.org/packages/elm/core/latest/Basics#== which describes why it is this way and what the better version will look like.
+```text
+Error: Trying to use `(==)` on functions.
+There is no way to know if functions are "the same" in the Elm sense.
+Read more about this at https://package.elm-lang.org/packages/elm/core/latest/Basics#== which describes why it is this way and what the better version will look like.
+```
 
 -}
 exception : a -> b
@@ -76,9 +80,3 @@ exception msg =
             (\x -> x) == (\x -> x)
     in
     infiniteLoop msg
-
-
-{-| -}
-unsafeGetJust : Maybe a -> a
-unsafeGetJust m =
-    m |> Maybe.withDefault (exception "Unexpected Nothing")
