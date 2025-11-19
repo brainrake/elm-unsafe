@@ -3,7 +3,7 @@
     "name": "brainrake/elm-unsafe",
     "summary": "DO NOT USE! Crash your app with infinite loop, stack overflow, or exception.",
     "license": "MIT",
-    "version": "1.0.1",
+    "version": "1.0.2",
     "exposed-modules": [
         "Unsafe"
     ],

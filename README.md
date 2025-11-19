@@ -24,6 +24,8 @@ There is only one legitimate use, when all of the following are true:
 
 This happens when you are writing a library, and some of the exported types have type parameters and guarantee some invariants that can not be expressed in the type system. Smart constructors are used and regular constructors are not exposed to avoid breaking invariants.
 
+This technique is used in the wild: [example](https://github.com/elm-community/graph/blob/6.0.0/src/Graph.elm#L701-L712).
+
 ## How?
 
 The goal is to return a value of arbitrary type, which could be anything at all, which is normally impossible because we know nothing about it and we don't already have one.
@@ -42,26 +44,4 @@ The other functions `stackOverflow` and `exception` all use this function to ret
 
 You never actually need this library. DO NOT `elm install` it!
 
-## How to use
-
-```elm
-x |> Maybe.withDefault (infiniteLoop ())
-```
-
-## Which one to use
-
-Do you need to return an abstract type? If not, use `Maybe.withDefault`.
-
-Do you have a logical proof that the function is impossible to call? If not, use `Maybe`.
-
-So if the function will never be called, does it matter which one you use? Not really. `infiniteLoop` is the cleanest though. You could just implement it yourself, maybe in a `let`, no need to add a dependency.
-
-Read more about the functions in the [module documentation](Unsafe)
-
-## Why have `exception` if it is never called?
-
-You can use `exception` instead of `infiniteLoop` while developing your library to avoid freezing the browser tab and instead throwing an exception immediately. Make sure to prove correctness before publishing.
-
-## Why `stackOverflow` ?
-
-It's a stepping stone to `exception` and I wanted to catalog all the ways to crash.
+Read the documentation and source to learn more.
