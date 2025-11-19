@@ -79,7 +79,7 @@ This is achieved by comparing two functions.
 
 The error is even more cryptic than `stackOverflow`, but the CPU, memory and interactivity are not stressed.
 
-You never need this. Use `Maybe.withDefault` or `Debug.todo` and see.
+You never need this. Use `Maybe.withDefault` or `Debug.todo` and see `Unsafe.infiniteLoop`.
 
 Throws the following exception:
 
